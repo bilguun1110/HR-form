@@ -2,16 +2,14 @@ import { Request } from "express";
 import { UserModel } from "../../db";
 export const createUserQuery = async (req: Request) => {
   try {
-    const { firstName, lastName, email, phone, password } = req.body;
-    if (!email || !phone || !password) {
+    const { name, email, password } = req.body;
+    if (!email || !name || !password) {
       return "Мэдээлэл дутуу байна";
     }
 
     const user = await UserModel.create({
-      firstName,
-      lastName,
+      name,
       email,
-      phone,
       password,
     });
     return user;
