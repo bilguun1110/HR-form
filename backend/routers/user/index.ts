@@ -1,6 +1,7 @@
 import Router from "express";
 import {
   createUserController,
+  getAllUsersController,
   oneTimePasswordController,
   passwordChangeController,
 } from "../../controllers";
@@ -17,3 +18,5 @@ userRouter.post("/forgot", ForgotPasswordController);
 userRouter.post("/oneTime", oneTimePasswordController);
 
 userRouter.post("/change", passwordChangeController);
+
+userRouter.get("/allUsers", getAllUsersController);
