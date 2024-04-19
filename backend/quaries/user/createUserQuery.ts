@@ -1,5 +1,9 @@
 import { Request } from "express";
 import { UserModel } from "../../db";
+import { passwordHash } from "../../util";
+import { getUserByEmail } from "../../util";
+import { get } from "mongoose";
+
 export const createUserQuery = async (req: Request) => {
   try {
     const { name, email, password } = req.body;
@@ -7,11 +11,16 @@ export const createUserQuery = async (req: Request) => {
       return "Мэдээлэл дутуу байна";
     }
 
+    console.log("aa");
+
+    const hashedPassword = await passwordHash(password);
     const user = await UserModel.create({
       name,
       email,
-      password,
+      password: hashedPassword,
     });
+    console.log(user);
+
     return user;
   } catch (error: any) {
     return "Хэрэлэгч бүртгэгдсэн байна";

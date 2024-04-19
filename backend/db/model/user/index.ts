@@ -12,15 +12,15 @@ export type UserModelType = {
 };
 
 const UserSchema = new Schema<UserModelType>({
-  email: { type: String, required: true },
   name: { type: String, required: true },
+  email: { type: String, required: true },
   password: { type: String, required: true },
   isAdmin: { type: Boolean, default: false, required: false },
   createdAt: { type: Date, required: true, default: Date.now },
   updatedAt: { type: Date, required: true, default: Date.now },
-  OTP: { type: String, required: true },
+  OTP: { type: String, required: false },
 });
 
 export const UserModel: Model<UserModelType> =
-  models["User"] || model("User", UserSchema);
+  models["Users"] || model("Users", UserSchema);
 export const isEmailValid = UserSchema.index({ email: 1 }, { unique: true });
