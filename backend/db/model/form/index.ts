@@ -2,7 +2,7 @@ import { Model, model, Schema, models } from "mongoose";
 
 export type FormModelType = {
   _id: Schema.Types.ObjectId;
-  specialization: string;
+  occupation: string;
   firstName: string;
   lastName: string;
   gender?: string;
@@ -15,7 +15,7 @@ export type FormModelType = {
 };
 
 const FormSchema = new Schema<FormModelType>({
-  specialization: { type: String, required: true },
+  occupation: { type: String, required: true },
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
   gender: { type: String, required: true },

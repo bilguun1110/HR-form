@@ -4,7 +4,7 @@ import { FormModel } from "../../db";
 export const createFormQuery = async (req: Request) => {
   try {
     const {
-      specialization,
+      occupation,
       firstName,
       lastName,
       gender,
@@ -15,7 +15,7 @@ export const createFormQuery = async (req: Request) => {
     } = req.body;
 
     const form = await FormModel.create({
-      specialization,
+      occupation,
       firstName,
       lastName,
       gender,

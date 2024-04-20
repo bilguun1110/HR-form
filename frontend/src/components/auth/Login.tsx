@@ -17,9 +17,9 @@ export const Login = () => {
       <div
         style={{
           backgroundImage: "url('background.png')",
-          width: "36%",
+          width: "50%",
           height: "100vh",
-          marginLeft: "14%",
+
           objectFit: "scale-down",
           backgroundSize: "cover",
         }}
@@ -42,7 +42,7 @@ export const Login = () => {
       <div
         style={{
           borderRight: "#B4BCF5 1px solid",
-          width: "36%",
+          width: "50%",
           height: "100vh",
         }}
       >
@@ -71,14 +71,14 @@ export const Login = () => {
             <InputBase
               sx={{ borderWidth: "1px" }}
               placeholder="Email address"
-              className="w-[100%] h-[50px] p-4  text-[14px]  mt-[10px] rounded-[20px] mb-[40px]"
+              className="w-[80%] h-[50px] p-4  text-[14px]  mt-[10px] rounded-[20px] mb-[40px]"
             />
             <p className="font-[500] text-[18px]">Password</p>
             <InputBase
               type={showPassword ? "password" : "text"}
               placeholder="********"
               sx={{ borderWidth: "1px" }}
-              className="w-[100%] h-[50px] p-4  text-[14px]  mt-[10px] rounded-[20px] "
+              className="w-[80%] h-[50px] p-4  text-[14px]  mt-[10px] rounded-[20px] "
               endAdornment={
                 <InputAdornment position="end">
                   <IconButton onClick={handleClickShowPassword} edge="end">
@@ -87,11 +87,11 @@ export const Login = () => {
                 </InputAdornment>
               }
             />
-            <p className="flex justify-end text-[14px] cursor-pointer text-[#6E5FFC]">
+            <p className="flex ml-[50%] text-[14px] cursor-pointer text-[#6E5FFC]">
               Forgot password?
             </p>
           </div>
-          <div className="flex flex-col ml-[13%]">
+          <div className="flex flex-col ml-[2%]">
             <button className="bg-[#6E5FFC]  text-white rounded-[20px] text-[18px] h-[45px] cursor-pointer font-[500] w-[350px]">
               Login
             </button>

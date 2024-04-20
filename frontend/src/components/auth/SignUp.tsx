@@ -109,7 +109,7 @@ export const SignUp = () => {
               }
             />
           </div>
-          <div className="flex flex-col ml-[13%]">
+          <div className="flex flex-col ">
             <button className="bg-[#6E5FFC]  text-white rounded-[20px] text-[18px] h-[45px] cursor-pointer font-[500] w-[350px]">
               SignUp
             </button>
