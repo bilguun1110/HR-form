@@ -1,8 +1,10 @@
+"use client";
 import React from "react";
 import { Input } from "../ui/input";
 import SearchIcon from "@mui/icons-material/Search";
 import { InputBase } from "@mui/material";
-
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import { useRouter } from "next/navigation";
 const Answers = [
   {
     Occupation: "Software Engineer",
@@ -27,9 +29,18 @@ const Answers = [
 ];
 
 export const Forms = () => {
+  const router = useRouter();
+
+  const backPage = () => {
+    router.push("/dashboard");
+  };
   return (
     <div>
-      <div>
+      <div className="flex  gap-[30px]">
+        <ArrowBackIosNewIcon
+          onClick={backPage}
+          className="mt-[30px] w-[30px] ml-[20px] cursor-pointer text-[#6E5FFC] h-[30px] "
+        />
         <div
           style={{
             width: "400px",

@@ -12,6 +12,6 @@ export const oneTimePassword = async (req: Request) => {
   if (user.OTP === OTP) {
     return "Нууц код зөв байна";
   } else {
-    throw new Error("Нууц код буруу байна");
+    throw new Error("Invalid Code");
   }
 };

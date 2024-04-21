@@ -15,10 +15,9 @@ import * as Yup from "yup";
 import { AxiosInstance } from "@/utils/AxiosInstance";
 import { useState } from "react";
 import { ChangeEvent } from "react";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+// import { toast, ToastContainer } from "react-toastify";
 
-type formType = {
+export type formType = {
   specialization: string;
   firstName: string;
   lastName: string;
@@ -57,7 +56,7 @@ export const Resume = () => {
 
   const saveForm = async () => {
     try {
-      const save = await AxiosInstance.post("form", {
+      const { data } = await AxiosInstance.post("form", {
         specialization: userdata.specialization,
         firstName: userdata.firstName,
         lastName: userdata.lastName,
@@ -67,57 +66,19 @@ export const Resume = () => {
         address: userdata.address,
         email: userdata.email,
       });
-      console.log(save, "save");
-      toast.success("Form  sent successfully", {
-        position: "top-right",
-        autoClose: 3000, // Close the toast after 3 seconds
-      });
+      console.log(data, "save");
+      // toast.success("Form  sent successfully", {
+      //   position: "top-right",
+      //   autoClose: 3000,
+      // });
     } catch (error) {
       console.log(error);
     }
   };
-  // const initialValues = {
-  //   occupation: "",
-  //   firstName: "",
-  //   lastName: "",
-  //   gender: "",
-  //   phone: "",
-  //   age: 0,
-  //   address: "",
-  //   email: "",
-  // };
 
-  // const validationSchema = Yup.object().shape({
-  //   occupation: Yup.string().required("occupation is required"),
-  //   firstName: Yup.string().required("First name is required"),
-
-  //   lastName: Yup.string().required("Last name is required"),
-  //   gender: Yup.string().required("Gender is required"),
-  //   phone: Yup.string()
-  //     .matches(
-  //       /^[6789][0-9]{7}$/,
-  //       "Phone number must start with 6,7,8 or 9 and be 8 digits in total"
-  //     )
-  //     .required("Phone number is required"),
-
-  //   age: Yup.number().required("Age is required"),
-  //   address: Yup.string().required("Address is required"),
-  //   email: Yup.string()
-  //     .email("Invalid email address")
-  //     .required("Email is required"),
-  // });
-  // const createFormFunc = async (values: typeof initialValues) => {
-  //   try {
-  //     const { data } = await AxiosInstance.post("form", values);
-  //     console.log("Form values:", values);
-  //     console.log(data);
-  //   } catch (error: any) {
-  //     console.log(error);
-  //   }
-  // };
   return (
     <div className=" ml-[20%] mt-[10%] ">
-      <ToastContainer position="top-right" autoClose={3000} />
+      {/* <ToastContainer position="top-right" autoClose={3000} /> */}
       <div className="flex flex-col gap-[20px]">
         <Select
           name="
@@ -160,7 +121,6 @@ specialization"
             placeholder="Firstname"
             onChange={handleChange}
             name="firstName"
-            // onChange={(e) => setFieldValue("firstName", e.target.value)}
           />
           <Input
             className="w-[275px] rounded-[10px] border-[0.5px] h-[50px] "
@@ -170,14 +130,7 @@ specialization"
           />
         </div>
         <div className="flex gap-[50px]">
-          <Select
-            // name="gender"
-            // onValueChange={(e) => {
-            //   setFieldValue("gender", e);
-            // }}
-            onValueChange={handleSelectGender}
-            name="gender"
-          >
+          <Select onValueChange={handleSelectGender} name="gender">
             <SelectTrigger className="w-[275px] rounded-[10px] border-[0.5px] h-[50px]">
               <SelectValue placeholder="Gender" />
             </SelectTrigger>

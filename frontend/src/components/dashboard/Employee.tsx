@@ -1,4 +1,7 @@
-import React from "react";
+"use client";
+import { AxiosInstance } from "@/utils/AxiosInstance";
+import React, { useEffect, useState } from "react";
+import { formType } from "../form/Resume";
 
 const Answers = [
   {
@@ -22,53 +25,40 @@ const Answers = [
     Social: "Chinguun",
   },
 ];
+
 export const Employee = () => {
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const { data } = await AxiosInstance.get("allUsers");
+        setUsers(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div>
       {" "}
       <div>
-        <div className="flex mb-[20px]">
-          <p className="text-[18px] font-[500] ml-[10px] mr-[120px]">
-            Occupation
-          </p>
-          <p className="text-[18px] font-[500] mr-[110px]">Firstname</p>
-          <p className="text-[18px] font-[500] mr-[105px]">Lastname</p>
-          <p className="text-[18px] font-[500] mr-[40px]">Gender</p>
-          <p className="text-[18px] font-[500] mr-[80px]">Phone</p>
-          <p className="text-[18px] font-[500] mr-[30px]">Age</p>
-          <p className="text-[18px] font-[500] mr-[170px]">Social</p>
-          <p className="text-[18px] font-[500] mr-[50px]">Address</p>
+        <div className="flex mb-[20px] gap-[300px]">
+          <p className="text-[18px] font-[500] ml-[10px] ">id</p>
+          <p className="text-[18px] font-[500] ">Email</p>
         </div>
         <div className="flex flex-col gap-[15px]">
-          {Answers.map(
-            (
-              {
-                Occupation,
-                Firstname,
-                Lastname,
-                Gender,
-                Phone,
-                Age,
-                Address,
-                Social,
-              },
-              index
-            ) => (
-              <div
-                key={index}
-                className="flex gap-[20px] w-[100%] h-[50px] rounded-[10px] items-center pl-[15px]  bg-white"
-              >
-                <p className="w-[200px] text-gray-600 ">{Occupation}</p>
-                <p className="w-[180px] text-gray-600 ">{Firstname}</p>
-                <p className="w-[180px] text-gray-600  ">{Lastname}</p>
-                <p className="w-[80px] text-gray-600 ">{Gender}</p>
-                <p className="w-[120px] text-gray-600  ">{Phone}</p>
-                <p className="w-[50px] text-gray-600  ">{Age}</p>
-                <p className="w-[200px] text-gray-600 ">{Social}</p>
-                <p className="w-[250px] text-gray-600 ">{Address}</p>
-              </div>
-            )
-          )}
+          {users.map(({ _id, email }, index) => (
+            <div
+              key={index}
+              className="flex gap-[100px] w-[100%] h-[50px] rounded-[10px] items-center pl-[15px]  bg-white"
+            >
+              <p className="w-[200px] text-gray-600 ">{_id}</p>
+              <p className="w-[180px] text-gray-600 ">{email}</p>
+            </div>
+          ))}
         </div>
       </div>
     </div>

@@ -7,7 +7,12 @@ import Visibility from "@mui/icons-material/Visibility";
 import { useState } from "react";
 import { InputBase, InputAdornment, IconButton } from "@mui/material";
 
-export const Step_3 = () => {
+type Password = {
+  handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
+};
+
+export const Step_3 = (props: Password) => {
+  const { handleChange } = props;
   const [showPasswordOne, setShowPasswordOne] = useState(false);
   const handleClickShowPasswordOne = () => {
     setShowPasswordOne(!showPasswordOne);
@@ -33,6 +38,8 @@ export const Step_3 = () => {
             type={showPasswordOne ? "password" : "text"}
             sx={{ borderWidth: "1px" }}
             placeholder="********"
+            name="password"
+            onChange={handleChange}
             className="w-[100%] h-[50px] p-4  text-[14px]  rounded-[20px] mb-[30px]"
             endAdornment={
               <InputAdornment position="end">
@@ -45,6 +52,8 @@ export const Step_3 = () => {
 
           <p className="font-[500] text-[18px]">Confirm password</p>
           <InputBase
+            onChange={handleChange}
+            name="rePassword"
             type={showPassword ? "password" : "text"}
             sx={{ borderWidth: "1px" }}
             placeholder="********"

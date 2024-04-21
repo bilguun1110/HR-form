@@ -16,35 +16,36 @@ import { Resume } from "../form/Resume";
 export const Dashboard = () => {
   const [changeForm, setChangeForm] = useState(0);
   const { isUser, setIsUser, loggedInUserData } = useContext(UserContext);
-  console.log(loggedInUserData.isAdmin);
-
   const { push } = useRouter();
 
   const emailParts = loggedInUserData.email.split("@");
   const username = emailParts[0];
 
-  const handleChange = async () => {
-    if (changeForm === 0) {
-      try {
-        const result = await AxiosInstance.get("allForms");
-        console.log(result);
-        setChangeForm(1);
-      } catch (error: any) {
-        return error.message;
-      }
-    } else if (changeForm === 1) {
-      const result = await AxiosInstance.get("allUsers");
-      setChangeForm(0);
-      console.log(result);
-    }
-  };
+  // const handleChange = async () => {
+  //   if (changeForm === 0) {
+  //     try {
+  //       const result = await AxiosInstance.get("allForms");
+  //       console.log(result);
+  //       setChangeForm(1);
+  //     } catch (error: any) {
+  //       return error.message;
+  //     }
+  //   } else if (changeForm === 1) {
+  //     const result = await AxiosInstance.get("allUsers");
+  //     setChangeForm(0);
+  //     console.log(result);
+  //   }
+  // };
 
   const exitHandle = () => {
     localStorage.removeItem("token");
     setIsUser(false);
     push("/");
   };
-  console.log(loggedInUserData.isAdmin, "aa");
+
+  const hadnleChangeForm = () => {
+    push("/forms");
+  };
 
   return (
     <div>
@@ -68,23 +69,19 @@ export const Dashboard = () => {
         <div className="p-[30px] bg-gray-100">
           <div>
             <div className="flex gap-[70px]">
-              <p
-                onClick={handleChange}
-                className="font-[400] text-[20px] text-[#6E5FFC] cursor-pointer"
-              >
-                Forms
+              <p className="font-[400] text-[20px] text-[#6E5FFC] cursor-pointer">
+                Users
               </p>
               <p
-                onClick={handleChange}
+                onClick={hadnleChangeForm}
                 className="font-[400] text-[20px] cursor-pointer"
               >
-                Employees
+                Forms
               </p>
             </div>
           </div>
           <div>
-            {changeForm === 0 && <Forms />}
-            {changeForm === 1 && <Employee />}
+            <Employee />
           </div>
         </div>
       ) : (

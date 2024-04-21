@@ -5,4 +5,4 @@ export const formRouter = Router();
 
 formRouter.post("/form", createFormController);
 
-formRouter.get("/allForms", getAllFormController);
+formRouter.post("/allForms", getAllFormController);

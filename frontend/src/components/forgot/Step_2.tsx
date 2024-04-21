@@ -2,8 +2,11 @@
 import { CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { ChangeEvent } from "react";
-
-export const Step_2 = () => {
+type OTP = {
+  handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
+};
+export const Step_2 = (props: OTP) => {
+  const { handleChange } = props;
   return (
     <div className="flex flex-col gap-[15px] w-[60%]">
       <div className="flex justify-center">
@@ -17,10 +20,11 @@ export const Step_2 = () => {
             Enter the password you received by email!
           </p>
           <Input
-            name="email"
+            name="OTP"
             placeholder="Enter code"
+            onChange={handleChange}
             className="rounded-[20px] h-[50px] text-gray-600 text-[16px] font-normal"
-          ></Input>
+          />
         </div>
       </div>
     </div>

@@ -2,8 +2,11 @@
 import { CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { ChangeEvent } from "react";
-
-export const Step_1 = () => {
+type Email = {
+  handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
+};
+export const Step_1 = (props: Email) => {
+  const { handleChange } = props;
   return (
     <div className="flex flex-col gap-[15px] w-[60%]">
       <div className="flex justify-center">
@@ -17,6 +20,7 @@ export const Step_1 = () => {
           <Input
             name="email"
             placeholder="Email address"
+            onChange={handleChange}
             className="rounded-[20px] h-[50px] text-gray-600 text-[16px] font-normal"
           ></Input>
         </div>
