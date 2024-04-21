@@ -22,9 +22,9 @@ export const SignUp = () => {
       <div
         style={{
           backgroundImage: "url('background.png')",
-          width: "36%",
+          width: "50%",
           height: "100vh",
-          marginLeft: "14%",
+
           objectFit: "scale-down",
           backgroundSize: "cover",
         }}
@@ -46,8 +46,7 @@ export const SignUp = () => {
 
       <div
         style={{
-          borderRight: "#B4BCF5 1px solid",
-          width: "36%",
+          width: "50%",
           height: "100vh",
         }}
       >
@@ -57,7 +56,7 @@ export const SignUp = () => {
             height: "70%",
 
             marginLeft: "20%",
-            marginTop: "20%",
+            marginTop: "10%",
           }}
         >
           <h3 className="text-[30px] font-[600] ">Welcome to TechPack</h3>
@@ -76,7 +75,7 @@ export const SignUp = () => {
             <InputBase
               sx={{ borderWidth: "1px" }}
               placeholder="Email address"
-              className="w-[100%] h-[50px] p-4  text-[14px]  mt-[10px] rounded-[20px] mb-[40px]"
+              className="w-[80%] h-[50px] p-4  text-[14px]  mt-[10px] rounded-[20px] mb-[40px]"
             />
             <p className="font-[500] text-[18px]">Password</p>
 
@@ -84,7 +83,7 @@ export const SignUp = () => {
               type={showPasswordOne ? "password" : "text"}
               sx={{ borderWidth: "1px" }}
               placeholder="********"
-              className="w-[100%] h-[50px] p-4  text-[14px]  mt-[10px] rounded-[20px] mb-[40px]"
+              className="w-[80%] h-[50px] p-4  text-[14px]  mt-[10px] rounded-[20px] mb-[40px]"
               endAdornment={
                 <InputAdornment position="end">
                   <IconButton onClick={handleClickShowPasswordOne} edge="end">
@@ -99,7 +98,7 @@ export const SignUp = () => {
               type={showPassword ? "password" : "text"}
               sx={{ borderWidth: "1px" }}
               placeholder="********"
-              className="w-[100%] h-[50px] p-4  text-[14px]  mt-[10px] rounded-[20px] "
+              className="w-[80%] h-[50px] p-4  text-[14px]  mt-[10px] rounded-[20px] "
               endAdornment={
                 <InputAdornment position="end">
                   <IconButton onClick={handleClickShowPassword} edge="end">
@@ -109,7 +108,7 @@ export const SignUp = () => {
               }
             />
           </div>
-          <div className="flex flex-col ">
+          <div className="flex flex-col ml-[2%]">
             <button className="bg-[#6E5FFC]  text-white rounded-[20px] text-[18px] h-[45px] cursor-pointer font-[500] w-[350px]">
               SignUp
             </button>
