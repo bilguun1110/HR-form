@@ -12,9 +12,9 @@ export const Forgot = () => {
       <div
         style={{
           backgroundImage: "url('background.png')",
-          width: "36%",
+          width: "50%",
           height: "100vh",
-          marginLeft: "14%",
+
           objectFit: "scale-down",
           backgroundSize: "cover",
         }}
@@ -37,7 +37,7 @@ export const Forgot = () => {
         className="flex justify-center items-center "
         style={{
           borderRight: "#B4BCF5 1px solid",
-          width: "36%",
+          width: "50%",
           height: "100vh",
         }}
       >

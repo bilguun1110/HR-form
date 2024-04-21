@@ -6,12 +6,55 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Visibility from "@mui/icons-material/Visibility";
 import { useState } from "react";
 import { InputBase, InputAdornment, IconButton } from "@mui/material";
+import { useRouter } from "next/navigation";
+import { AxiosInstance } from "@/utils/AxiosInstance";
+import { UserContext } from "@/utils/Context";
+import { useContext } from "react";
 
 export const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
   };
+
+  const { loggedInUserData } = useContext(UserContext);
+  console.log(loggedInUserData);
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { push } = useRouter();
+  const [error, setError] = useState("");
+
+  const loginHandler = async () => {
+    try {
+      const { data } = await AxiosInstance.post("/login", {
+        email: email,
+        password: password,
+      });
+
+      if (
+        data.login == "User not found" ||
+        data.login == "Wrond email or password" ||
+        data.login == "Email and password required"
+      ) {
+        setError(data.login);
+      } else {
+        push("/dashboard");
+        localStorage.setItem("token", data.login);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const jumpSignUp = async () => {
+    push("/signup");
+  };
+
+  const jumpForgotPass = async () => {
+    push("/forgot");
+  };
+
   return (
     <div style={{ display: "flex" }}>
       <div
@@ -70,29 +113,41 @@ export const Login = () => {
             <p className="font-[500] text-[18px]">Email</p>
             <InputBase
               sx={{ borderWidth: "1px" }}
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
               placeholder="Email address"
               className="w-[80%] h-[50px] p-4  text-[14px]  mt-[10px] rounded-[20px] mb-[40px]"
             />
             <p className="font-[500] text-[18px]">Password</p>
             <InputBase
-              type={showPassword ? "password" : "text"}
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+              type={showPassword ? "text" : "password"}
               placeholder="********"
               sx={{ borderWidth: "1px" }}
               className="w-[80%] h-[50px] p-4  text-[14px]  mt-[10px] rounded-[20px] "
               endAdornment={
                 <InputAdornment position="end">
                   <IconButton onClick={handleClickShowPassword} edge="end">
-                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                    {showPassword ? <Visibility /> : <VisibilityOff />}
                   </IconButton>
                 </InputAdornment>
               }
             />
-            <p className="flex ml-[50%] text-[14px] cursor-pointer text-[#6E5FFC]">
+            <p
+              onClick={jumpForgotPass}
+              className="flex ml-[50%] text-[14px] cursor-pointer text-[#6E5FFC]"
+            >
               Forgot password?
             </p>
+            {error && <div className="text-red-500 ml-[20%]">{error}</div>}
           </div>
+
           <div className="flex flex-col ml-[2%]">
-            <button className="bg-[#6E5FFC]  text-white rounded-[20px] text-[18px] h-[45px] cursor-pointer font-[500] w-[350px]">
+            <button
+              onClick={loginHandler}
+              className="bg-[#6E5FFC]  text-white rounded-[20px] text-[18px] h-[45px] cursor-pointer font-[500] w-[350px]"
+            >
               Login
             </button>
             <div
@@ -104,7 +159,12 @@ export const Login = () => {
               }}
             >
               <p className="text-gray-700 ">Don't have an account?</p>
-              <p className="text-[#6E5FFC] font-[600] cursor-pointer">Signup</p>
+              <p
+                onClick={jumpSignUp}
+                className="text-[#6E5FFC] font-[600] cursor-pointer"
+              >
+                Signup
+              </p>
             </div>
           </div>
         </div>

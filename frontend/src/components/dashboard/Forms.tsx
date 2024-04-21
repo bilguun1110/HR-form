@@ -1,5 +1,7 @@
 import React from "react";
 import { Input } from "../ui/input";
+import SearchIcon from "@mui/icons-material/Search";
+import { InputBase } from "@mui/material";
 
 const Answers = [
   {
@@ -28,15 +30,29 @@ export const Forms = () => {
   return (
     <div>
       <div>
-        <Input className="w-[100px]" />
+        <div
+          style={{
+            width: "400px",
+            height: "40px",
+            alignItems: "center",
+            justifyItems: "center",
+            borderRadius: "8px",
+            paddingLeft: 2,
+            gap: 8,
+            display: "flex",
+            border: "solid",
+            borderColor: "gray",
+            borderWidth: "0.5px",
+            marginTop: "30px",
+            marginBottom: "30px",
+          }}
+        >
+          <SearchIcon className="cursor-pointer" />
+          <InputBase placeholder="Search" className="w-[100%]" />
+        </div>
       </div>
       <div>
-        <div className="flex ">
-          {/* {Title.map((el, index) => (
-            <div key={index} className="text-[18px] font-[500] ">
-              {el}
-            </div>
-          ))} */}
+        <div className="flex mb-[20px]">
           <p className="text-[18px] font-[500] ml-[10px] mr-[120px]">
             Occupation
           </p>
@@ -48,7 +64,7 @@ export const Forms = () => {
           <p className="text-[18px] font-[500] mr-[170px]">Social</p>
           <p className="text-[18px] font-[500] mr-[50px]">Address</p>
         </div>
-        <div className="flex flex-col gap-[20px]">
+        <div className="flex flex-col gap-[15px]">
           {Answers.map(
             (
               {
