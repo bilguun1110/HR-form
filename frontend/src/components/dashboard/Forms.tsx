@@ -62,6 +62,18 @@ export const Forms = () => {
                 $options: "i",
               },
             },
+            {
+              lastName: {
+                $regex: inputValue,
+                $options: "i",
+              },
+            },
+            {
+              email: {
+                $regex: inputValue,
+                $options: "i",
+              },
+            },
           ],
         },
       };
@@ -91,8 +103,8 @@ export const Forms = () => {
         />
 
         <div>
-          <h2 className="text-sm">
-            Search by user firstname, phone number, specialization
+          <h2 className="text-sm text-gray-500">
+            Search by Firstname, Lastname, Phone, Specialization,Email
           </h2>
           <div
             style={{
@@ -124,7 +136,7 @@ export const Forms = () => {
       <div>
         <div className="flex mb-[20px]">
           <p className="text-[18px] font-[500] ml-[10px] mr-[120px]">
-            Occupation
+            Specialization
           </p>
           <p className="text-[18px] font-[500] mr-[110px]">Firstname</p>
           <p className="text-[18px] font-[500] mr-[115px]">Lastname</p>
