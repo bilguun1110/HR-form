@@ -71,7 +71,7 @@ export const Login = () => {
             src="/techpack.png"
             alt=""
             width={300}
-            height={10}
+            height={100}
             style={{
               backgroundColor: "#FAF8FD",
               marginTop: "6%",

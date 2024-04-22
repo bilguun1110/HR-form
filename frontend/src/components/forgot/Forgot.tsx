@@ -86,12 +86,12 @@ export const Forgot = () => {
           <Image
             src="/techpack.png"
             alt=""
-            width={270}
-            height={90}
+            width={300}
+            height={100}
             style={{
               backgroundColor: "#FAF8FD",
               marginTop: "6%",
-              marginLeft: "20px",
+              marginLeft: "50px",
             }}
           />
         </div>

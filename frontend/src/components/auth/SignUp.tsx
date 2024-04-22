@@ -23,10 +23,13 @@ export const SignUp = () => {
   const handleClickShowPasswordOne = () => {
     setShowPasswordOne(!showPasswordOne);
   };
-
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
+  };
+
+  const jumpSignUp = async () => {
+    push("/");
   };
 
   const initialValues = {
@@ -79,12 +82,12 @@ export const SignUp = () => {
           <Image
             src="/techpack.png"
             alt=""
-            width={270}
-            height={90}
+            width={300}
+            height={100}
             style={{
               backgroundColor: "#FAF8FD",
               marginTop: "6%",
-              marginLeft: "20px",
+              marginLeft: "50px",
             }}
           />
         </div>
@@ -213,7 +216,10 @@ export const SignUp = () => {
                     }}
                   >
                     <p className="text-gray-700 ">Already have an account?</p>
-                    <p className="text-[#6E5FFC] font-[600] cursor-pointer">
+                    <p
+                      onClick={jumpSignUp}
+                      className="text-[#6E5FFC] font-[600] cursor-pointer"
+                    >
                       Login
                     </p>
                   </div>
