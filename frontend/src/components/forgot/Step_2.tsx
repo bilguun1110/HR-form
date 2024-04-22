@@ -15,7 +15,7 @@ export const Step_2 = (props: OTP) => {
         </CardTitle>
       </div>
       <div>
-        <div className="flex flex-col gap-[15px]">
+        <div className="flex flex-col justify-center items-center gap-[15px]">
           <p className="font-normal text-base text-gray-600">
             Enter the password you received by email!
           </p>
@@ -23,7 +23,7 @@ export const Step_2 = (props: OTP) => {
             name="OTP"
             placeholder="Enter code"
             onChange={handleChange}
-            className="rounded-[20px] h-[50px] text-gray-600 text-[16px] font-normal"
+            className="rounded-[20px] w-[400px] h-[50px] text-gray-600 text-[16px] font-normal"
           />
         </div>
       </div>

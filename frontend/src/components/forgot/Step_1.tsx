@@ -13,7 +13,7 @@ export const Step_1 = (props: Email) => {
         <CardTitle className="font-medium text-3xl">Forgot password</CardTitle>
       </div>
       <div>
-        <div className="flex flex-col gap-[15px]">
+        <div className="flex flex-col justify-center items-center gap-[15px]">
           <p className="font-normal text-base text-gray-600">
             A one-time recovery code will be sent to your email address
           </p>
@@ -21,7 +21,7 @@ export const Step_1 = (props: Email) => {
             name="email"
             placeholder="Email address"
             onChange={handleChange}
-            className="rounded-[20px] h-[50px] text-gray-600 text-[16px] font-normal"
+            className="rounded-[20px] w-[400px] h-[50px] text-gray-600 text-[16px] font-normal"
           ></Input>
         </div>
       </div>

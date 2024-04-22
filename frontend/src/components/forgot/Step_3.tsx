@@ -28,23 +28,23 @@ export const Step_3 = (props: Password) => {
         <CardTitle className="font-medium text-3xl">Change password</CardTitle>
       </div>
       <div>
-        <div className="flex flex-col gap-[15px]">
+        <div className="flex flex-col justify-center items-center gap-[15px]">
           <p className="font-normal text-base text-gray-600">
             Create a new password!
           </p>
           <p className="font-[500] text-[18px]">Password</p>
 
           <InputBase
-            type={showPasswordOne ? "password" : "text"}
+            type={showPasswordOne ? "text" : "password"}
             sx={{ borderWidth: "1px" }}
             placeholder="********"
             name="password"
             onChange={handleChange}
-            className="w-[100%] h-[50px] p-4  text-[14px]  rounded-[20px] mb-[30px]"
+            className=" w-[400px] h-[50px] p-4  text-[14px]  rounded-[20px] mb-[30px]"
             endAdornment={
               <InputAdornment position="end">
                 <IconButton onClick={handleClickShowPasswordOne} edge="end">
-                  {showPasswordOne ? <VisibilityOff /> : <Visibility />}
+                  {showPasswordOne ? <Visibility /> : <VisibilityOff />}
                 </IconButton>
               </InputAdornment>
             }
@@ -54,14 +54,14 @@ export const Step_3 = (props: Password) => {
           <InputBase
             onChange={handleChange}
             name="rePassword"
-            type={showPassword ? "password" : "text"}
+            type={showPassword ? "text" : "password"}
             sx={{ borderWidth: "1px" }}
             placeholder="********"
-            className="w-[100%] h-[50px] p-4  text-[14px]   rounded-[20px] "
+            className="w-[400px] h-[50px] p-4  text-[14px]   rounded-[20px] "
             endAdornment={
               <InputAdornment position="end">
                 <IconButton onClick={handleClickShowPassword} edge="end">
-                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                  {showPassword ? <Visibility /> : <VisibilityOff />}
                 </IconButton>
               </InputAdornment>
             }

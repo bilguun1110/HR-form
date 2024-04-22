@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import { Forms } from "@/components/dashboard/Forms";
 import { Header } from "@/components/header/Header";
@@ -20,6 +20,7 @@ export const Dashboard = () => {
 
   const emailParts = loggedInUserData.email.split("@");
   const username = emailParts[0];
+  console.log(username);
 
   // const handleChange = async () => {
   //   if (changeForm === 0) {
@@ -66,15 +67,15 @@ export const Dashboard = () => {
         </div>
       </div>
       {loggedInUserData.isAdmin === true ? (
-        <div className="p-[30px] bg-gray-100">
+        <div className="p-[30px] bg-gray-100 h-[100vh]">
           <div>
-            <div className="flex gap-[70px]">
-              <p className="font-[400] text-[20px] text-[#6E5FFC] cursor-pointer">
+            <div className="flex gap-[70px] mb-[50px]">
+              <p className="font-[500] text-[24px]  text-[#6E5FFC] cursor-pointer">
                 Users
               </p>
               <p
                 onClick={hadnleChangeForm}
-                className="font-[400] text-[20px] cursor-pointer"
+                className="font-[500] text-[24px] cursor-pointer"
               >
                 Forms
               </p>

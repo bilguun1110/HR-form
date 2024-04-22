@@ -1,7 +1,6 @@
 "use client";
 import { AxiosInstance } from "@/utils/AxiosInstance";
 import React, { useEffect, useState } from "react";
-import { formType } from "../form/Resume";
 
 const Answers = [
   {
