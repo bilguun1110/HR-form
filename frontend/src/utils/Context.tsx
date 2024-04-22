@@ -23,6 +23,7 @@ export type UserContextType = {
   isUser: boolean;
   setIsUser: Dispatch<SetStateAction<boolean>>;
   loggedInUserData: UserData;
+  setLoggedInUserData: Dispatch<SetStateAction<UserData>>;
 };
 export const UserContext = createContext<UserContextType>(
   {} as UserContextType
@@ -45,40 +46,43 @@ export const UserProvider = ({ children }: Props) => {
   });
   const router = useRouter();
 
-  const token = typeof window !== "undefined" && localStorage.getItem("token");
-  if (!token) {
-    router.push("/");
-  }
-
   useEffect(() => {
-    if (token) {
-      const verifyToken = async () => {
-        try {
-          const { data } = await axios.post(
-            "http://localhost:8000/refresh",
-            {},
-            {
-              headers: {
-                Authorization: `Bearer ${token}`,
-                "Content-type": "application/json",
-              },
-            }
-          );
+    const token =
+      typeof window !== "undefined" && localStorage.getItem("token");
 
-          setLoggedInUserData(data.user);
-          setIsUser(true);
-          router.push("/dashboard");
-        } catch (error) {
-          console.log(error);
-          setIsUser(false);
-        }
-      };
-      verifyToken();
+    if (!token) {
+      router.push("/");
+      return;
     }
-  }, []);
+
+    const verifyToken = async () => {
+      try {
+        const { data } = await axios.post(
+          "http://localhost:8000/refresh",
+          {},
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-type": "application/json",
+            },
+          }
+        );
+        setLoggedInUserData(data?.user);
+        setIsUser(true);
+        router.push("/dashboard");
+      } catch (error) {
+        console.log(error);
+        setIsUser(false);
+      }
+    };
+
+    verifyToken();
+  }, [isUser]);
 
   return (
-    <UserContext.Provider value={{ isUser, setIsUser, loggedInUserData }}>
+    <UserContext.Provider
+      value={{ isUser, setIsUser, loggedInUserData, setLoggedInUserData }}
+    >
       {children}
     </UserContext.Provider>
   );

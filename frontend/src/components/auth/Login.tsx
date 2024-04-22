@@ -17,7 +17,7 @@ export const Login = () => {
     setShowPassword(!showPassword);
   };
 
-  const { loggedInUserData } = useContext(UserContext);
+  const { setIsUser } = useContext(UserContext);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -38,8 +38,8 @@ export const Login = () => {
       ) {
         setError(data.login);
       } else {
-        push("/dashboard");
         localStorage.setItem("token", data.login);
+        setIsUser(true);
       }
     } catch (error) {
       console.log(error);

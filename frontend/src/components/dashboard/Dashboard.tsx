@@ -18,25 +18,13 @@ export const Dashboard = () => {
   const { isUser, setIsUser, loggedInUserData } = useContext(UserContext);
   const { push } = useRouter();
 
+  console.log(
+    loggedInUserData,
+    "loggedInUserDataloggedInUserDataloggedInUserDataloggedInUserData"
+  );
+
   const emailParts = loggedInUserData.email.split("@");
   const username = emailParts[0];
-  console.log(username);
-
-  // const handleChange = async () => {
-  //   if (changeForm === 0) {
-  //     try {
-  //       const result = await AxiosInstance.get("allForms");
-  //       console.log(result);
-  //       setChangeForm(1);
-  //     } catch (error: any) {
-  //       return error.message;
-  //     }
-  //   } else if (changeForm === 1) {
-  //     const result = await AxiosInstance.get("allUsers");
-  //     setChangeForm(0);
-  //     console.log(result);
-  //   }
-  // };
 
   const exitHandle = () => {
     localStorage.removeItem("token");

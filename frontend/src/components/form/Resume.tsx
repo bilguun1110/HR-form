@@ -66,19 +66,6 @@ export const Resume = () => {
     });
   };
 
-  // const notifyEror = () => {
-  //   toast.error("🦄 Welcome! You're now signed in", {
-  //     position: "top-center",
-  //     autoClose: 4000,
-  //     hideProgressBar: false,
-  //     closeOnClick: true,
-  //     pauseOnHover: true,
-  //     draggable: true,
-  //     progress: undefined,
-  //     theme: "light",
-  //     transition: Bounce,
-  //   });
-  // };
   const saveForm = async () => {
     try {
       const { data } = await AxiosInstance.post("form", {
